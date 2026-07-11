@@ -17,27 +17,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* ปุ่มมุมบน */
-.top-bar {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  right: 16px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.top-bar button {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.2);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 /* โปรไฟล์ */
     .profile {
       border-radius: 16px;
