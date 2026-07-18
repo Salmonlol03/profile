@@ -2,6 +2,12 @@
     const fileInput = document.getElementById('fileInput');
     const profileImg = document.getElementById('profileImg');
     const fallback = document.getElementById('fallback');
+    const video = document.getElementById('myVideo');
+
+  // ตัวอย่าง: log เมื่อวิดีโอเล่นจบ
+  video.addEventListener('ended', () => {
+    console.log('วิดีโอเล่นจบแล้ว');
+  });
 
 
 
