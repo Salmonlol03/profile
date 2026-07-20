@@ -218,7 +218,7 @@ body {
   background: linear-gradient(90deg, #d29673, #ff5e00f8, #ffbb93f8);
   -webkit-background-clip: text;
   color: white; /* สีตัวอักษรด้านใน */
-  -webkit-text-stroke: 0.01px rgb(255, 255, 255); /* ความหนา + สีขอบ */
+  -webkit-text-stroke: 1px rgb(255, 255, 255); /* ความหนา + สีขอบ */
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'KcSmart', 'Inter', sans-serif;
