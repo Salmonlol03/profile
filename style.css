@@ -38,6 +38,7 @@ body {
       cursor: context-menu;
       position: relative;
       transition: transform 0.15s ease, border-color 0.15s ease;
+      margin-bottom: 10px;
     }
 
     .avatar-wrapper:hover {
@@ -51,11 +52,24 @@ body {
       object-fit: cover;
       display: block;
     }
-
+  @font-face {
+    font-family: 'LEMONMILK';
+    src: url('fonts/LEMONMILK.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
     h1 {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1a1a1a;
+    font-family: 'LEMONMILK', 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    }
+
+    h1{
+    margin-bottom: -5px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
     }
 
     p {
@@ -64,7 +78,7 @@ body {
     }
 
      p {
-    margin-bottom: 0px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
+    margin-bottom: -20px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
     }
 
 
@@ -75,14 +89,14 @@ body {
   gap: 12px;
   margin-top: 32px;
   padding: 0 24px;
-  width: 100%;
+  width: 100%; 
   max-width: 250px;
 }
 
 .card {
-  background: rgba(255,255,255,0.15);
-  border: 3px solid rgba(255,255,255,0.3);
-  border-radius: 12px;
+  background: #ff6a0039; 
+  border: 3px solid #ff7300;
+  border-radius: 12px; 
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
@@ -110,24 +124,40 @@ body {
    
 
 .info-grid {
-  margin-bottom: 12px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
+  margin-bottom: -10px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
 }
 
 
 /* ส่วน TikTok */
-.video-box {
+.video-boxs {
+  width: 60%;
+  background: linear-gradient(90deg, #ff5e0000, #ffbb9300);
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   padding: 24px 24px 40px;
-  width: 100%;
-  max-width: 300px;
-  background: #1a1a1a;
+}
+
+.video-boxs::-webkit-scrollbar {
+  display: none;
+}
+
+.video-box {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  background: linear-gradient(90deg, #ff5e0016, #ff5e0024);
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 24px rgba(255, 94, 0, 0);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 24px 24px 30px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .video-box:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0);
 }
 
 .video-box video {
@@ -164,9 +194,11 @@ body {
   background-color: #1d4ed8;
 }
 
-.video-box {
-  margin-top: 32px;
+.video-boxs{
+  margin-bottom: -40px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
 }
+
+
 /* ===== ส่วนสินค้า ===== */
 .shop-section {
   padding: 24px 24px 40px;
@@ -174,14 +206,29 @@ body {
   max-width: 400px;
 }
 
-.shop-label {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 13px;
+@font-face {
+  font-family: 'KcSmart';
+  src: url('fonts/PKFamberDemo.ttf') format('truetype');
   font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+.shop-label {
+  background: linear-gradient(90deg, #d29673, #ff5e00f8, #ffbb93f8);
+  -webkit-background-clip: text;
+  color: white; /* สีตัวอักษรด้านใน */
+  -webkit-text-stroke: 0.01px rgb(255, 255, 255); /* ความหนา + สีขอบ */
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'KcSmart', 'Inter', sans-serif;
+  font-size: 45px;
+  font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
+
 
 .product-grid {
   display: grid;
@@ -219,7 +266,7 @@ body {
 }
 
 .product-info {
-  padding: 8px 10px 10px;
+  padding: 10px 20px 30px;
 }
 
 .product-name {

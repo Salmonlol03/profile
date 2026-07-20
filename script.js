@@ -3,6 +3,7 @@
     const profileImg = document.getElementById('profileImg');
     const fallback = document.getElementById('fallback');
     const video = document.getElementById('myVideo');
+    const slider = document.getElementById('videoBoxs');
 
   // ตัวอย่าง: log เมื่อวิดีโอเล่นจบ
   video.addEventListener('ended', () => {
@@ -66,7 +67,39 @@ document.getElementById('fileInput').addEventListener('change', function(e) {
 // ตอนโหลดหน้า ดึงรูปที่เก็บไว้มาใส่
 window.addEventListener('load', function() {
   const saved = localStorage.getItem('profileImage');
-  if (saved) {
+  if (saved) {https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop
     document.getElementById('profileImg').src = saved;
   }
+});
+
+
+// เลือน
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  slider.classList.add('dragging');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('dragging');
+});
+
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.classList.remove('dragging');
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  slider.scrollLeft = scrollLeft - walk;
 });
