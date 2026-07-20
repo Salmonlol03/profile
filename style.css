@@ -60,13 +60,13 @@ body {
     font-display: swap;
   }
     h1 {
-    color: #ffffff;
     font-family: 'LEMONMILK', 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     margin-bottom: 12px;
+    color: #ffffff;
     }
 
     h1{
