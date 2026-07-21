@@ -11,7 +11,7 @@ body {
   display: flex; /* คจัดเลย์เอาแบบ flex */
   flex-direction: column; /* เรียงของจากบนลงล่าง */
   align-items: center; /* จัดกลางแนวนอน */
-  max-width: 480px;  /* ความกว้างสูงสุดของเนื้อหา */
+  max-width: 520px;  /* ความกว้างสูงสุดของเนื้อหา */
   margin: 0 auto; /* จัดให้อยู่กลางจอ */
   justify-content: center; /* จัดกลางแนวตั้ง */
   font-family: 'Segoe UI', sans-serif;
