@@ -1,9 +1,4 @@
-const fileInput = document.getElementById('fileInput');
-const fallback = document.getElementById('fallback');
 const slider = document.getElementById('videoBoxs');
-const ctxMenu = document.getElementById('ctxMenu');
-const changeBtn = document.getElementById('changeBtn');
-const resetBtn = document.getElementById('resetBtn');
 
 let isDown = false;
 let startX;
