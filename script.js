@@ -1,14 +1,51 @@
-  const menu = document.getElementById('ctxMenu');
-  const fileInput = document.getElementById('fileInput');
-  const profileImg = document.getElementById('profileImg');
-  const fallback = document.getElementById('fallback');
-  const video = document.getElementById('myVideo');  
-  const slider = document.getElementById('videoBoxs');
+const fileInput = document.getElementById('fileInput');
+const profileImg = document.getElementById('profileImg');
+const fallback = document.getElementById('fallback');
+const slider = document.getElementById('videoBoxs');
+const avatar = document.getElementById('avatar');
+const ctxMenu = document.getElementById('ctxMenu');
+const changeBtn = document.getElementById('changeBtn');
+const resetBtn = document.getElementById('resetBtn');
 
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+// จำรูปเริ่มต้นไว้ใช้ตอนกด "รีเซ็ต"
+const defaultProfileSrc = profileImg ? profileImg.getAttribute('src') : '';
 
+// เปิดเมนูคลิกขวาที่รูปโปรไฟล์
+if (avatar && ctxMenu) {
+  avatar.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    ctxMenu.style.left = `${e.pageX}px`;
+    ctxMenu.style.top = `${e.pageY}px`;
+    ctxMenu.style.display = 'flex';
+  });
+
+  document.addEventListener('click', () => {
+    ctxMenu.style.display = 'none';
+  });
+}
+
+if (changeBtn && fileInput) {
+  changeBtn.addEventListener('click', () => {
+    fileInput.click();
+  });
+}
+
+if (resetBtn) {
+  resetBtn.addEventListener('click', () => {
+    localStorage.removeItem('profileImage');
+    if (profileImg) {
+      profileImg.src = defaultProfileSrc;
+      profileImg.style.display = '';
+    }
+    if (fallback) fallback.style.display = 'none';
+  });
+}
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+if (slider) {
   slider.addEventListener('mousedown', (e) => {
     isDown = true;
     slider.classList.add('active');
@@ -17,8 +54,8 @@
   });
 
   slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('active');
+    isDown = false;
+    slider.classList.remove('active');
   });
 
   slider.addEventListener('mouseup', () => {
@@ -30,7 +67,7 @@
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.5; // เร็วในการเลื่อน ปรับได้
+    const walk = (x - startX) * 1.5; // ปรับความเร็วการเลื่อนได้ตรงนี้
     slider.scrollLeft = scrollLeft - walk;
   });
 
@@ -51,69 +88,37 @@
     const walk = (x - startX) * 1.5;
     slider.scrollLeft = scrollLeft - walk;
   });
-  
+}
 
-  // ตัวอย่าง: log เมื่อวิดีโอเล่นจบ
-  video.addEventListener('ended', () => {
-    console.log('วิดีโอเล่นจบแล้ว');
-  });
+// เปลี่ยนรูปโปรไฟล์เมื่อเลือกไฟล์
+if (fileInput) {
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-    // Hide menu on click outside
-    document.addEventListener('click', () => menu.style.display = 'none');
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64 = event.target.result;
 
-    // Change profile picture
-    document.getElementById('changeBtn').addEventListener('click', () => {
-      fileInput.click();
-    });
-
-    // Reset to original
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      localStorage.removeItem('profileImg');
-      profileImg.src = 'Pictures/น้องมัจฉะ.gif';
-      profileImg.style.display = '';
-      fallback.style.display = 'none';
-    });
-
-    // Load selected file
-    fileInput.addEventListener('change', e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64 = reader.result;
-        localStorage.setItem('profileImg', base64);
+      // เซ็ตรูปทันที
+      if (profileImg) {
         profileImg.src = base64;
         profileImg.style.display = '';
-        fallback.style.display = 'none';
-        fileInput.value = '';
-      };
-      reader.readAsDataURL(file);
+      }
+      if (fallback) fallback.style.display = 'none';
+
+      // เก็บลง localStorage ให้คงอยู่แม้รีเฟรช
+      localStorage.setItem('profileImage', base64);
       fileInput.value = '';
-    });
-
-    // ตอนผู้ใช้เลือกรูป
-document.getElementById('fileInput').addEventListener('change', function(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(event) {
-    const base64 = event.target.result; 
-    // ^ จะได้ "data:image/png;base64,iVBORw0..."
-
-    // เซ็ตรูปทันที
-    document.getElementById('profileImg').src = base64;
-
-    // เก็บลง localStorage ให้คงอยู่แม้รีเฟรช
-    localStorage.setItem('profileImage', base64);
-  };
-  reader.readAsDataURL(file); // แปลงเป็น Base64
-});
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 // ตอนโหลดหน้า ดึงรูปที่เก็บไว้มาใส่
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
   const saved = localStorage.getItem('profileImage');
-  if (saved) {https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop
-    document.getElementById('profileImg').src = saved;
+  if (saved && profileImg) {
+    profileImg.src = saved;
   }
 });

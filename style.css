@@ -52,6 +52,46 @@ body {
       object-fit: cover;
       display: block;
     }
+
+    .fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    /* เมนูคลิกขวาสำหรับเปลี่ยน/รีเซ็ตรูปโปรไฟล์ */
+    .ctx-menu {
+      display: none;
+      position: fixed;
+      flex-direction: column;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 160px;
+    }
+
+    .ctx-menu button {
+      background: none;
+      border: none;
+      padding: 10px 16px;
+      text-align: left;
+      font-size: 13px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .ctx-menu button:hover {
+      background: #f2f2f2;
+    }
+
   @font-face {
     font-family: 'LEMONMILK';
     src: url('fonts/LEMONMILK.ttf') format('truetype');

@@ -5,117 +5,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
-
 </head>
 <body>
 
   <!-- รูปโปรไฟล์ + ชื่อ -->
   <div class="profile">
     <div class="avatar-wrapper" id="avatar">
-    <img id="profileImg" src="Pictures/Teawpie.jpg" alt="profile">
-    <div class="fallback" id="fallback">T</div>
-  </div>
+      <img id="profileImg" src="Pictures/Teawpie.jpg" alt="profile">
+      <div class="fallback" id="fallback">T</div>
+    </div>
     <h1>Teawpie</h1>
     <p>@Teawpie</p>
 
-   <input type="file" id="fileInput" accept="image/*" style="display:none;">
+    <input type="file" id="fileInput" accept="image/*" style="display:none;">
 
-   <script src="script.js"></script>
+    <!-- เมนูคลิกขวาสำหรับเปลี่ยน/รีเซ็ตรูปโปรไฟล์ -->
+    <div id="ctxMenu" class="ctx-menu">
+      <button id="changeBtn">เปลี่ยนรูปโปรไฟล์</button>
+      <button id="resetBtn">รีเซ็ตเป็นค่าเริ่มต้น</button>
+    </div>
   </div>
 
   <!-- สามช่องแนวนอน -->
-<div class="info-grid">
-  <div class="card">
-    <a href="https://www.instagram.com/teawpie" target="_blank">
-    <img src="icon/instagram.png" alt="Instagram" width="20">
-    </a>
-</div>
-  <div class="card">
-    <a href="https://Line.me/ti/p/~honeypie_001" target="_blank">
-    <img src="icon/line.png" alt="Line" width="20">
-    </a>
-</div>
-  <div class="card">
-    <a href="https://www.tiktok.com/@teawpie" target="_blank">
-    <img src="icon/tik-tok.png" alt="TikTok" width="20">
-    </a>
-</div>
-</div>
-
-
-
-<div id="videoBoxs" class="video-boxs">
-  <!-- ช่อง Tiktok 1 -->
-  <div class="video-box">
-    <a class="product-card" href="https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop" target="_blank">
-      <video class="tiktok-video" autoplay muted loop playsinline>
-        <source src="Product/Vido/001.mp4" type="video/mp4">
-      </video>
-    </a>
+  <div class="info-grid">
+    <div class="card">
+      <a href="https://www.instagram.com/teawpie" target="_blank">
+        <img src="icon/instagram.png" alt="Instagram" width="20">
+      </a>
+    </div>
+    <div class="card">
+      <a href="https://Line.me/ti/p/~honeypie_001" target="_blank">
+        <img src="icon/line.png" alt="Line" width="20">
+      </a>
+    </div>
+    <div class="card">
+      <a href="https://www.tiktok.com/@teawpie" target="_blank">
+        <img src="icon/tik-tok.png" alt="TikTok" width="20">
+      </a>
+    </div>
   </div>
 
-  <!-- ช่อง Tiktok 2 -->
-  <div class="video-box">
-    <a class="product-card" href="https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop" target="_blank">
-      <video class="tiktok-video" autoplay muted loop playsinline>
-        <source src="Product/Vido/002.mp4" type="video/mp4">
-      </video>
-    </a>
+  <div id="videoBoxs" class="video-boxs">
+    <!-- ช่อง Tiktok 1 -->
+    <div class="video-box">
+      <a class="product-card" href="https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop" target="_blank">
+        <video class="tiktok-video" autoplay muted loop playsinline>
+          <source src="Product/Vido/001.mp4" type="video/mp4">
+        </video>
+      </a>
+    </div>
+
+    <!-- ช่อง Tiktok 2 -->
+    <div class="video-box">
+      <a class="product-card" href="https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop" target="_blank">
+        <video class="tiktok-video" autoplay muted loop playsinline>
+          <source src="Product/Vido/002.mp4" type="video/mp4">
+        </video>
+      </a>
+    </div>
+
+    <!-- ช่อง Tiktok 3 -->
+    <div class="video-box">
+      <a class="product-card" href="https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop" target="_blank">
+        <video class="tiktok-video" autoplay muted loop playsinline>
+          <source src="Product/Vido/003.mp4" type="video/mp4">
+        </video>
+      </a>
+    </div>
   </div>
 
-  <!-- ช่อง Tiktok 3 -->
-  <div class="video-box">
-    <a class="product-card" href="https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop" target="_blank">
-      <video class="tiktok-video" autoplay muted loop playsinline>
-        <source src="Product/Vido/003.mp4" type="video/mp4">
-      </video>
-    </a>
+  <!-- ส่วนสินค้า -->
+  <div class="shop-section">
+    <p class="shop-label">🛒 สินค้า Tiktok</p>
+    <div class="product-grid" id="productGrid">
+
+      <a class="product-card" href="https://vt.tiktok.com/ZS9rR3GBJkgVP-khRDF/" target="_blank">
+        <div class="product-img">
+          <img src="Product/001.webp" alt="ถิงถิงหม่าล่า">
+        </div>
+        <div class="product-info">
+          <p class="product-name">ถิงถิงหม่าล่า เซตหม่าล่าพร้อมน้ำจิ้มงาคั่ว</p>
+          <p class="product-price"><span>฿ 175.68</span></p>
+        </div>
+      </a>
+
+      <a class="product-card" href="https://vt.tiktok.com/ZS9rR33e7WcB2-ZmPli/" target="_blank">
+        <div class="product-img">
+          <img src="Product/002.webp" alt="BANOBAGI">
+        </div>
+        <div class="product-info">
+          <p class="product-name">[Disney Collection] BANOBAGI Final Sleeping Mask บาโนบากิ สลีปปิ้งมาสก์</p>
+          <p class="product-price"><span>฿ 50.00</span></p>
+        </div>
+      </a>
+
+      <a class="product-card" href="https://vt.tiktok.com/ZS9rR33e7WcB2-ZmPli/" target="_blank">
+        <div class="product-img">
+          <img src="Product/003.webp" alt="BANOBAGI">
+        </div>
+        <div class="product-info">
+          <p class="product-name">[Disney Collection] BANOBAGI Expertise Sleeping Mask 20ml บาโนบากิ เอ็กซ์เพอร์ทีส สลีปปิ้ง มาสก์</p>
+          <p class="product-price"><span>฿ 50.00</span></p>
+        </div>
+      </a>
+
+    </div>
   </div>
-</div>
 
-<script src="script.js"></script>
-    
-
-
-    <!-- ส่วนสินค้า -->
-<div class="shop-section">
-  <p class="shop-label">🛒 สินค้า Tiktok</p>
-  <div class="product-grid" id="productGrid">
-
-    <!-- การ์ดสินค้า (copy ซ้ำเพื่อเพิ่ม) -->
-    <a class="product-card" href="https://vt.tiktok.com/ZS9rR3GBJkgVP-khRDF/" target="_blank">
-      <div class="product-img">
-        <img src="Product/001.webp" alt="ถิงถิงหม่าล่า">
-      </div>
-      <div class="product-info">
-        <p class="product-name">ถิงถิงหม่าล่า เซตหม่าล่าพร้อมน้ำจิ้มงาคั่ว</p>
-        <p class="product-price"><span>฿ 175.68</span></p>
-      </div>
-    </a>
-
-    <a class="product-card" href="https://vt.tiktok.com/ZS9rR33e7WcB2-ZmPli/" target="_blank">
-      <div class="product-img">
-        <img src="Product/002.webp" alt="BANOBAGI">
-      </div>
-      <div class="product-info">
-        <p class="product-name">[Disney Collection] BANOBAGI Final Sleeping Mask บาโนบากิ สลีปปิ้งมาสก์</p>
-        <p class="product-price"><span>฿ 50.00</span></p>
-      </div>
-    </a>
-
-    <a class="product-card" href="https://vt.tiktok.com/ZS9rR33e7WcB2-ZmPli/" target="_blank">
-      <div class="product-img">
-        <img src="Product/003.webp" alt="BANOBAGI">
-      </div>
-      <div class="product-info">
-        <p class="product-name">[Disney Collection] BANOBAGI Expertise Sleeping Mask 20ml บาโนบากิ เอ็กซ์เพอร์ทีส สลีปปิ้ง มาสก์</p>
-        <p class="product-price"><span>฿ 50.00</span></p>
-      </div>
-    </a>
-
-  </div>
-  
-</div>
-
+  <script src="script.js"></script>
 </body>
 </html>
