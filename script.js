@@ -1,44 +1,9 @@
 const fileInput = document.getElementById('fileInput');
 const fallback = document.getElementById('fallback');
 const slider = document.getElementById('videoBoxs');
-const avatar = document.getElementById('avatar');
 const ctxMenu = document.getElementById('ctxMenu');
 const changeBtn = document.getElementById('changeBtn');
 const resetBtn = document.getElementById('resetBtn');
-
-// จำรูปเริ่มต้นไว้ใช้ตอนกด "รีเซ็ต"
-const defaultProfileSrc = profileImg ? profileImg.getAttribute('src') : '';
-
-// เปิดเมนูคลิกขวาที่รูปโปรไฟล์
-if (avatar && ctxMenu) {
-  avatar.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-    ctxMenu.style.left = `${e.pageX}px`;
-    ctxMenu.style.top = `${e.pageY}px`;
-    ctxMenu.style.display = 'flex';
-  });
-
-  document.addEventListener('click', () => {
-    ctxMenu.style.display = 'none';
-  });
-}
-
-if (changeBtn && fileInput) {
-  changeBtn.addEventListener('click', () => {
-    fileInput.click();
-  });
-}
-
-if (resetBtn) {
-  resetBtn.addEventListener('click', () => {
-    localStorage.removeItem('profileImage');
-    if (profileImg) {
-      profileImg.src = defaultProfileSrc;
-      profileImg.style.display = '';
-    }
-    if (fallback) fallback.style.display = 'none';
-  });
-}
 
 let isDown = false;
 let startX;
