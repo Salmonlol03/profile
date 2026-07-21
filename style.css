@@ -138,7 +138,16 @@ body {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
   padding: 24px 24px 40px;
+  cursor: grab;
+  margin-bottom: -40px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
+  user-select: none;
+}
+
+.video-boxs.active {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .video-boxs::-webkit-scrollbar {
@@ -151,9 +160,12 @@ body {
   background: linear-gradient(90deg, #ff5e0016, #ff5e0024);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(255, 94, 0, 0);
+  display: flex;
+  justify-content: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 24px 24px 30px;
   border: 3px solid #ffffff;
+  pointer-events: none; /* ป้องกันการเลือกข้อความ/ลากรูปตอน drag */
 }
 
 .video-box:hover {
@@ -195,10 +207,6 @@ body {
   background-color: #1d4ed8;
 }
 
-.video-boxs{
-  margin-bottom: -40px; /* เว้นระยะจากกล่องวิดีโอด้านล่าง */
-}
-
 
 /* ===== ส่วนสินค้า ===== */
 .shop-section {
@@ -219,7 +227,7 @@ body {
   background: linear-gradient(90deg, #d29673, #ff5e00f8, #ffbb93f8);
   -webkit-background-clip: text;
   color: white; /* สีตัวอักษรด้านใน */
-  -webkit-text-stroke: 0.5px rgb(255, 255, 255); /* ความหนา + สีขอบ */
+  -webkit-text-stroke: 1px rgb(255, 255, 255); /* ความหนา + สีขอบ */
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'KcSmart', 'Inter', sans-serif;

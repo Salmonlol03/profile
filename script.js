@@ -1,16 +1,62 @@
-    const menu = document.getElementById('ctxMenu');
-    const fileInput = document.getElementById('fileInput');
-    const profileImg = document.getElementById('profileImg');
-    const fallback = document.getElementById('fallback');
-    const video = document.getElementById('myVideo');
-    const slider = document.getElementById('videoBoxs');
+  const menu = document.getElementById('ctxMenu');
+  const fileInput = document.getElementById('fileInput');
+  const profileImg = document.getElementById('profileImg');
+  const fallback = document.getElementById('fallback');
+  const video = document.getElementById('myVideo');  
+  const slider = document.getElementById('videoBoxs');
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5; // เร็วในการเลื่อน ปรับได้
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  // รองรับมือถือ (touch)
+  slider.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('touchend', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+  
 
   // ตัวอย่าง: log เมื่อวิดีโอเล่นจบ
   video.addEventListener('ended', () => {
     console.log('วิดีโอเล่นจบแล้ว');
   });
-
-
 
     // Hide menu on click outside
     document.addEventListener('click', () => menu.style.display = 'none');
@@ -70,36 +116,4 @@ window.addEventListener('load', function() {
   if (saved) {https://vt.tiktok.com/ZSXap9xhE/?page=TikTokShop
     document.getElementById('profileImg').src = saved;
   }
-});
-
-
-// เลือน
-
-let isDown = false;
-let startX;
-let scrollLeft;
-
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.classList.add('dragging');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
-
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('dragging');
-});
-
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.classList.remove('dragging');
-});
-
-slider.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 1.5;
-  slider.scrollLeft = scrollLeft - walk;
 });
