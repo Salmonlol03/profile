@@ -1,5 +1,4 @@
 const fileInput = document.getElementById('fileInput');
-const profileImg = document.getElementById('profileImg');
 const fallback = document.getElementById('fallback');
 const slider = document.getElementById('videoBoxs');
 const avatar = document.getElementById('avatar');
@@ -90,35 +89,3 @@ if (slider) {
   });
 }
 
-// เปลี่ยนรูปโปรไฟล์เมื่อเลือกไฟล์
-if (fileInput) {
-  fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const base64 = event.target.result;
-
-      // เซ็ตรูปทันที
-      if (profileImg) {
-        profileImg.src = base64;
-        profileImg.style.display = '';
-      }
-      if (fallback) fallback.style.display = 'none';
-
-      // เก็บลง localStorage ให้คงอยู่แม้รีเฟรช
-      localStorage.setItem('profileImage', base64);
-      fileInput.value = '';
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-// ตอนโหลดหน้า ดึงรูปที่เก็บไว้มาใส่
-window.addEventListener('load', () => {
-  const saved = localStorage.getItem('profileImage');
-  if (saved && profileImg) {
-    profileImg.src = saved;
-  }
-});
